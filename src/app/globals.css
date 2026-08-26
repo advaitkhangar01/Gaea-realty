@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gaea-blue: #03356C;
+  --gaea-blue-deep: #022A55;
+  --gaea-blue-surface: #E3ECF7;
+  --gaea-olive: #566038;
+  --gaea-olive-surface: #E6E8DF;
+  --gaea-gold: #906B3B;
+  --gaea-gold-surface: #F4E9D6;
+  --gaea-charcoal: #222529;
+  --gaea-white: #FFFFFF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: #222529;
+    background-color: #ffffff;
+    font-family: var(--font-sora), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background-color: #03356C;
+    color: #ffffff;
+  }
+}
+
+/* Custom Design Tokens & Editorial Styles */
+.font-display {
+  font-family: var(--font-fraunces), serif;
+}
+
+.font-secondary {
+  font-family: var(--font-sora), sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-literata), Georgia, serif;
+}
+
+/* Architectural Contour Graphic Pattern */
+.bg-contour-pattern {
+  background-image: radial-gradient(circle at 50% 50%, rgba(86, 96, 56, 0.06) 1px, transparent 1px),
+                    linear-gradient(to right, rgba(86, 96, 56, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px;
+}
+
+.bg-monogram-pattern {
+  background-image: radial-gradient(circle at 20% 20%, rgba(144, 107, 59, 0.05) 0%, transparent 60%);
+}
+
+/* Custom Visible Animated Background Gradients */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatGlow1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(45px, -35px) scale(1.2);
+    opacity: 0.85;
+  }
+}
+
+@keyframes floatGlow2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-40px, 40px) scale(1.25);
+    opacity: 0.8;
+  }
+}
+
+.animate-gradient-bg {
+  background-size: 200% 200% !important;
+  animation: gradientShift 10s ease infinite !important;
+}
+
+.animate-gradient-slow {
+  background-size: 220% 220% !important;
+  animation: gradientShift 14s ease infinite !important;
+}
+
+.animate-glow-1 {
+  animation: floatGlow1 9s ease-in-out infinite !important;
+}
+
+.animate-glow-2 {
+  animation: floatGlow2 11s ease-in-out infinite !important;
+}
+
+/* Lenis Smooth Scroll Fixes */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
